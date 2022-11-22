@@ -1,0 +1,22 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ejprd_usecase_flash: <http://purl.org/ejp-rd/ontologies/2022/6/ejprd-usecase-flash#>
+
+select ?user_label ?user_id ?usecase_label where { 
+    ?user a ejprd_usecase_flash:Clinical_doing_research ;
+          	ejprd_usecase_flash:has_user_role ?role ;
+    		rdfs:label ?user_label ;
+    		ejprd_usecase_flash:has_id ?user_id .
+    ?role a ejprd_usecase_flash:Clinical_doing_research_role ;
+          	ejprd_usecase_flash:user_role_of ?user;
+          	rdfs:label ?role_label .
+    ?usecase a ejprd_usecase_flash:Use_case ;
+             ejprd_usecase_flash:use_case_of_user ?user;
+             ejprd_usecase_flash:use_case_involves_specific_goal ?specific_goal ;
+             ejprd_usecase_flash:such_that_I_can ?contextual_goal ;
+             rdfs:label ?usecase_label .
+    ?specific_goal a ejprd_usecase_flash:SpecificGoal ;
+                 rdfs:label ?specific_goal_label .
+    ?contextual_goal a ejprd_usecase_flash:ContextualGoal ;
+                 rdfs:label ?contextual_goal_label .
+}

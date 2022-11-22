@@ -1,2 +1,3 @@
-# flash-cards
-Semantized presenation flash cards use case
+# EJPRD presentation flash cards
+
+Use case focused on flash cards RDF representation
